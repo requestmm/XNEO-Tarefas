@@ -21,6 +21,8 @@ Route::GET("/cadastrar", function (){
 });
 
 Route::GET("/tarefas", function (){
+    $usuarios = $GLOBALS['DB']->query("SELECT * FROM usuarios WHERE 1=1")->fetchAll();
+    $tarefas = $GLOBALS['DB']->query("SELECT tarefas.*, usuarios.*, tarefas.id AS tarefa_id FROM tarefas INNER JOIN usuarios ON tarefas.usuario_id=usuarios.id WHERE tarefas.situacao<>'-1'")->fetchAll();
     include_once dirname(__FILE__) . "/Views/tarefas.php";
 });
 

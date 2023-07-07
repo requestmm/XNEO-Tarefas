@@ -34,8 +34,10 @@ class TaskController
 
     public function POST($data = null)
     {
-
         
+        $pdo_sql = "INSERT INTO tarefas ( usuario_id, descricao, situacao ) VALUES ( :usuario_id, :descricao, 0 )";
+	    $pdo_statement = $GLOBALS['db']->prepare( $pdo_sql );
+	    $pdo_result = $pdo_statement->execute( array( ':usuario_id'=>$_REQUEST['usuario_id'], ':descricao'=>$_REQUEST['descricao']) );
 
 
     }
@@ -47,6 +49,14 @@ class TaskController
 
     public function PATCH($data = null)
     {
-        echo "view";
+        parse_str(file_get_contents('php://input'), $patch);
+        if (is_array($patch)) {
+        $data = array_merge($data, $patch);
+        }
+        $query = $GLOBALS["DB"]->prepare("UPDATE tarefas SET descricao=:descricao, situacao=:situacao WHERE id=:id ");
+        $result = $query->execute(array(":descricao" => $data["descricao"], ":situacao" => $data["acao"], ":id" => $data["tarefa_id"]));
+        var_dump($result);
+        return $result;
+
     }
 }

@@ -2,17 +2,24 @@
 
 <h1>Tarefas</h1>
 
+
+
 <div id="form-criar-tarefa">
-    <form action="/action_page.php">
-        <label for="email">Usuário</label>
-        <select id="country" name="country">
-        <option value="australia">Australia</option>
-        <option value="canada">Canada</option>
-        <option value="usa">USA</option>
+    <form action="javascript:void(0);" id="formulario-criar-tarefa">
+        <label for="usuario">Usuário</label>
+        <select id="usuario" name="usuario_id">
+
+        <?php
+        foreach ($usuarios as $usuario):
+        ?>
+        <option value="<?=$usuario["id"];?>"><?=$usuario["email"];?></option>
+        <?php
+        endforeach;
+        ?>
         </select>
 
-        <label for="senha">Descrição</label>
-        <input type="password" id="senha" name="senha" placeholder="Senha">
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" name="descricao" placeholder="Descrição">
 
         <button type="submit">
             Criar
@@ -25,42 +32,48 @@
 <br />
 
 <table>
+<thead>
   <tr>
     <th>Usuário</th>
     <th>Descrição</th>
     <th>Situação</th>
     <th>Ação</th>
   </tr>
-  <tr>
-    <td>Jill</td>
-    <td>Smith</td>
-    <td>50</td>
+  </thead>
+  <tbody>
+    <?php
+    foreach($tarefas as $tarefa):
+    ?>
+    <tr>
+    <form class="salvar-tarefa" action="javascript:void(0);" data-id="<?=$tarefa["tarefa_id"];?>">
+    <input name="tarefa_id" type="hidden" value="<?=$tarefa["tarefa_id"];?>" />
+    <td><?=$tarefa["email"];?></td>
     <td>
-        <button type="button" class="button button2">
+      <textarea name="descricao">
+        <?=$tarefa["descricao"];?>
+      </textarea>
+    </td>
+    <td><?=($tarefa["situacao"]==1? "Concluída":"Aguardando");?></td>
+    <td>
+      
+        <select name="acao">
+          <option value="1">Concluída</option>
+          <option value="0">Aguardando</option>
+          <option value="-1">Remover</option>
+        </select>
+
+        <button type="submit" class="button button2">
             Salvar
         </button>
+      
     </td>
+    </form>
   </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-    <td>
-        <button type="button" class="button button2">
-            Salvar
-        </button>
-    </td>
-  </tr>
-  <tr>
-    <td>Adam</td>
-    <td>Johnson</td>
-    <td>67</td>
-    <td>
-        <button type="button" class="button button2">
-            Salvar
-        </button>
-    </td>
-  </tr>
+    <?php
+    endforeach;
+    ?>
+  
+  </tbody>
 </table>
 
 
