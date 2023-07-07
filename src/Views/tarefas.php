@@ -21,27 +21,45 @@
     </form>
 </div>
 
+<br />
+<br />
 
 <table>
   <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Points</th>
+    <th>Usuário</th>
+    <th>Descrição</th>
+    <th>Situação</th>
+    <th>Ação</th>
   </tr>
   <tr>
     <td>Jill</td>
     <td>Smith</td>
     <td>50</td>
+    <td>
+        <button type="button" class="button button2">
+            Salvar
+        </button>
+    </td>
   </tr>
   <tr>
     <td>Eve</td>
     <td>Jackson</td>
     <td>94</td>
+    <td>
+        <button type="button" class="button button2">
+            Salvar
+        </button>
+    </td>
   </tr>
   <tr>
     <td>Adam</td>
     <td>Johnson</td>
     <td>67</td>
+    <td>
+        <button type="button" class="button button2">
+            Salvar
+        </button>
+    </td>
   </tr>
 </table>
 
