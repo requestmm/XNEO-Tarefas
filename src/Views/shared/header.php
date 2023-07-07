@@ -14,6 +14,7 @@
     <li><a class="active" href="/">Acessar</a></li>
     <li><a href="/cadastrar">Cadastrar</a></li>
     <li><a href="/tarefas">Tarefas</a></li>
+    <li><a href="/sair">Sair</a></li>
     </ul>
     </header>
     <main>

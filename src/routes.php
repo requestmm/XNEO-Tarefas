@@ -5,6 +5,7 @@ require_once "Route.php";
 require_once dirname(__FILE__) . "/Controllers/TaskController.php";
 
 Route::GET("/", function (){
+    
     include_once dirname(__FILE__) . "/Views/acessar.php";
 });
 

@@ -8,6 +8,7 @@ try {
     $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $GLOBALS['db'] = $DB;
+    session_start();
     
   } catch(PDOException $e) {
     echo "Falha na conexão no banco de dados: " . $e->getMessage();

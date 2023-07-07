@@ -3,7 +3,7 @@
 <h1>Cadastrar</h1>
 
 <div id="form-cadastrar">
-    <form action="/action_page.php">
+    <form action="/api/usuarios" method=POST>
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email" placeholder="E-mail">
 

@@ -25,7 +25,17 @@ class UserController{
     }
 
     public function POST($email, $senha){
-        return UserModel::cadastrar($email, $senha);
+        $usuario = UserModel::cadastrar($email, $senha);
+        if($usuario)
+        {
+            
+            $_SESSION['usuario'] = $usuario;
+            header( "refresh:5;URL=/tarefas" );
+            echo "Cadastrado com sucesso. Redirecionando...";
+        }else{
+            header( "refresh:5;URL=/cadastrar" );
+            echo "Falha ao cadastrar. Tente mais tarde novamente.";
+        }
     }
 
 

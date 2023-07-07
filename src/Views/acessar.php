@@ -1,9 +1,10 @@
+
 <?php require_once dirname(__FILE__) . '/shared/header.php'; ?>
 
 <h1>Acessar</h1>
 
 <div id="form-acessar">
-    <form action="/action_page.php">
+    <form action="/api/usuarios" method="GET">
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email" placeholder="E-mail">
 
