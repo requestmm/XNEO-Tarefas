@@ -5,8 +5,15 @@ require_once "Route.php";
 require_once dirname(__FILE__) . "/Controllers/TaskController.php";
 
 Route::GET("/", function (){
-    
+    if(isset($_SESSION['usuario'])){
+        header( "refresh:5;URL=/tarefas" );
+        echo "Você já está logado. Redirecionando..";
+        die();
+    }
     include_once dirname(__FILE__) . "/Views/acessar.php";
+});
+Route::GET("/sair", function (){
+    include_once dirname(__FILE__) . "/Views/sair.php";
 });
 
 Route::GET("/cadastrar", function (){

@@ -21,7 +21,17 @@ class UserController{
     }
 
     public function GET($email, $senha){
-        return UserModel::logar($email, $senha);
+        $usuario = UserModel::logar($email, $senha);
+        if($usuario)
+        {
+            
+            $_SESSION['usuario'] = $usuario;
+            header( "refresh:5;URL=/tarefas" );
+            echo "Logado com sucesso. Redirecionando...";
+        }else{
+            header( "refresh:5;URL=/cadastrar" );
+            echo "Falha ao logar. Tente mais tarde novamente.";
+        }
     }
 
     public function POST($email, $senha){

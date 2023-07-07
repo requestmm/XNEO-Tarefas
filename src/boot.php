@@ -13,3 +13,12 @@ try {
   } catch(PDOException $e) {
     echo "Falha na conexão no banco de dados: " . $e->getMessage();
   }
+
+
+function isLoggedIn() {
+  if(isset($_SESSION['usuario'])){
+    return true;
+  }else{
+    return false;
+  }
+}
