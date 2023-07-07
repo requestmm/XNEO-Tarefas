@@ -5,11 +5,19 @@ require_once "Route.php";
 require_once dirname(__FILE__) . "/Controllers/TaskController.php";
 
 Route::GET("/", function (){
-    echo "index";
+    include_once dirname(__FILE__) . "/Views/acessar.php";
 });
 
-Route::RESOURCE("/tarefas", 'TaskController');
-Route::RESOURCE("/usuarios", 'UserController');
+Route::GET("/cadastrar", function (){
+    include_once dirname(__FILE__) . "/Views/cadastrar.php";
+});
+
+Route::GET("/tarefas", function (){
+    include_once dirname(__FILE__) . "/Views/tarefas.php";
+});
+
+Route::RESOURCE("/api/tarefas", 'TaskController');
+Route::RESOURCE("/api/usuarios", 'UserController');
 
 Route::NOT_FOUND(function(){
     echo "Rota não encontrada";
